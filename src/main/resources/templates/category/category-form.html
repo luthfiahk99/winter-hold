@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout :: head}"></head>
+<body class="main-body">
+
+<nav th:replace="~{layout :: navigation}"></nav>
+
+<header th:replace="~{ layout :: header (${breadCrumbs}) }"></header>
+
+<main>
+    <form method="post" class="upsert-form" th:attr="action=@{/category/upsert}" th:object="${category}">
+        <input type="hidden" />
+        <table>
+            <tbody>
+            <tr>
+                <td><label>Category Name*</label></td>
+                <td>
+                    <input type="text" th:field="*{name}"/>
+                    <div class="field-validation-error" th:errors="*{name}"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Floor*</label></td>
+                <td>
+                    <input type="text" th:field="*{floor}" />
+                    <div class="field-validation-error" th:errors="*{floor}"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Isle*</label></td>
+                <td>
+                    <input type="text" th:field="*{isle}" />
+                    <div class="field-validation-error" th:errors="*{isle}"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Bay</label></td>
+                <td>
+                    <input type="text" th:field="*{bay}" />
+                    <div class="field-validation-error" th:errors="*{bay}"></div>
+                </td>
+            </tr>
+
+
+            </tbody>
+        </table>
+        <button class="blue-button" type="submit" th:text="${type} + ' Category'"></button>
+    </form>
+</main>
+<footer th:replace="~{layout :: footer}"></footer>
+<th:block th:replace="~{layout :: javascript}"></th:block>
+</body>
+</html>

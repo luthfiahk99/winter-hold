@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout :: head}"></head>
+<body class="main-body">
+
+<nav th:replace="~{layout :: navigation}"></nav>
+<header th:replace="~{layout :: header (${breadCrumbs})}">
+</header>
+
+
+
+<center>
+    <h1>Winterhold Library</h1>
+    <p>Knowledge is the best weapon you have, please find some fascinating books we have.</p>
+    <p>This app will help you do that as long as you keep extended membership!</p>
+    <p>(it's totally free!)</p>
+</center>
+
+
+<footer th:replace="~{layout :: footer}"></footer>
+
+</body>
+</html>

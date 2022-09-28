@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WinterHold</title>
+	<link rel="icon" type="image/ico" th:href="@{/favicon.ico}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/normalize.css}" />
+    <link rel="stylesheet" th:href="@{/resources/css/font-awesome.css}" />
+    <link rel="stylesheet" th:href="@{/resources/css/site.css}" />
+    <script th:src="@{/resources/js/jquery-3.6.0.js}"></script>
+</head>
+<body>
+	<nav th:fragment="navigation">
+	    <div class="company-logo">
+	        <img th:src="@{/resources/image/logo.png}" alt="Basilisk" />
+	        <h1>
+	            <span class="bold">Winter Hold</span>
+	        </h1>
+	    </div>
+	    <a class="menu home" th:href="@{/}">
+	        <i class="fas fa-th"></i>
+	        <span>Home</span>
+	    </a>
+	    <a class="menu author" th:href="@{/author}">
+	        <i class="fab fa-amazon"></i>
+	        <span>Authors</span>
+	    </a>
+	    <a class="menu book" th:href="@{/category}">
+	        <i class="fas fa-box-open"></i>
+	        <span>Books</span>
+	    </a>
+	    <a class="menu customer" th:href="@{/customer}">
+	        <i class="fas fa-map-marked-alt"></i>
+	        <span>Customers</span>
+	    </a>
+	    <a class="menu loan" th:href="@{/loan}">
+	        <i class="fas fa-users"></i>
+	        <span>Loan</span>
+	    </a>
+	</nav>
+
+    <header th:fragment="header (breadCrumbs)">
+        <div class="bread-crumbs">
+            <span th:text="${breadCrumbs}"></span>
+        </div>
+    </header>
+
+	<footer th:fragment="footer">
+	    Copyrights &copy; 2022
+	    <span class="author">Luthfiah Khairunnisa</span>
+	    All rights reserved.
+	</footer>
+
+	<th:block th:fragment="javascript">
+		<script th:src="@{/resources/js/site.js}" defer></script>
+	</th:block>
+</body>
+</html>

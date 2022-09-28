@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout :: head}"></head>
+<body class="main-body">
+
+<nav th:replace="~{layout :: navigation}"></nav>
+<header th:replace="~{layout :: header (${breadCrumbs})}"></header>
+
+<main>
+    <a class="blue-button" th:href="@{/author/index}">Back to Author Index</a>
+    <div class="grid-container region-detail">
+        <section class="header-info">
+            <div>Name: <span th:text="${headerFullName}"></span></div>
+            <div>Birth Date: <span th:text="${headerBirthDate}"></span></div>
+            <div>Deceased Date: <span th:text="${headerDeceasedDate}"></span></div>
+            <div>Education: <span th:text="${headerEducation}"></span></div>
+            <div>Summary: <span th:text="${headerSummary}"></span></div>
+        </section>
+        <table>
+            <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Category</th>
+                <th>Is Borrowed</th>
+                <th>Released Date</th>
+                <th>Total Page</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${grid}">
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.categoryName}"></td>
+                <td th:text="${book.isBorrowed}"></td>
+                <td th:text="${book.releaseDate}"></td>
+                <td th:text="${book.totalPage}"></td>
+
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5">
+                    <div class="pagination">
+                        <div th:text="|page ${currentPage} of ${totalPages}|"></div>
+                        <div>
+                            <a th:each="loop:${#numbers.sequence(1,totalPages)}"
+                               th:href="@{/author/detail(page=${loop},
+                                        id=${headerId},
+                                        book=${book})}"
+                               th:text="${loop}"></a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</main>
+<footer th:replace="~{layout :: footer}"></footer>
+<th:block th:replace="~{layout :: javascript}"></th:block>
+</body>
+</html>
